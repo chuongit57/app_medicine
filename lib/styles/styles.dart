@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medicare/styles/colors.dart';
+
+import 'colors.dart';
 
 TextStyle kTitleStyle = TextStyle(
   color: Color(MyColors.header01),

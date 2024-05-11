@@ -1,10 +1,8 @@
+import 'package:app_medicine/routes/router.dart';
+import 'package:app_medicine/utils/textscale.dart';
 import 'package:flutter/material.dart';
-import 'package:medicare/routes/router.dart';
-import 'package:medicare/utils/textscale.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       builder: fixTextScale,
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: routes,
     );
   }

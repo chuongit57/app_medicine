@@ -1,6 +1,6 @@
 {
-    "name": "medicare",
-    "short_name": "medicare",
+    "name": "app_medicine",
+    "short_name": "app_medicine",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
