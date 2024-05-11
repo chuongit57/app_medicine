@@ -80,7 +80,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Schedule',
+              'Đặt lịch bác sĩ',
               textAlign: TextAlign.center,
               style: kTitleStyle,
             ),
@@ -107,12 +107,10 @@ class _ScheduleTabState extends State<ScheduleTab> {
                                 if (filterStatus == FilterStatus.Upcoming) {
                                   status = FilterStatus.Upcoming;
                                   _alignment = Alignment.centerLeft;
-                                } else if (filterStatus ==
-                                    FilterStatus.Complete) {
+                                } else if (filterStatus == FilterStatus.Complete) {
                                   status = FilterStatus.Complete;
                                   _alignment = Alignment.center;
-                                } else if (filterStatus ==
-                                    FilterStatus.Cancel) {
+                                } else if (filterStatus == FilterStatus.Cancel) {
                                   status = FilterStatus.Cancel;
                                   _alignment = Alignment.centerRight;
                                 }
@@ -162,9 +160,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                   var _schedule = filteredSchedules[index];
                   bool isLastElement = filteredSchedules.length + 1 == index;
                   return Card(
-                    margin: !isLastElement
-                        ? EdgeInsets.only(bottom: 20)
-                        : EdgeInsets.zero,
+                    margin: !isLastElement ? EdgeInsets.only(bottom: 20) : EdgeInsets.zero,
                     child: Padding(
                       padding: EdgeInsets.all(15),
                       child: Column(

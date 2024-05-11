@@ -437,7 +437,7 @@ class SearchInput extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'Search a doctor or health issue',
+                hintText: 'Nhập tên thuốc bạn muốn tra cứu',
                 hintStyle: TextStyle(
                     fontSize: 13,
                     color: Color(MyColors.purple01),
@@ -465,11 +465,11 @@ class UserIntro extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             Text(
-              'Hello',
+              'Xin chào',
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
             Text(
-              'Brad King 👋',
+              'Văn Chương 👋',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ],
