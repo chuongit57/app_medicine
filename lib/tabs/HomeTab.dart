@@ -5,22 +5,22 @@ import '../styles/styles.dart';
 
 List<Map> doctors = [
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Mai Thanh Nam',
     'doctorTitle': 'Bác sĩ tim mạch'
   },
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Nguyễn Lê Lâm',
     'doctorTitle': 'Bác sĩ thần kinh'
   },
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Thạch Xuân Hoàng',
     'doctorTitle': 'Bác sĩ nha khoa'
   },
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Hồ Huy',
     'doctorTitle': 'Bác sĩ da liễu'
   }
@@ -227,7 +227,7 @@ class AppointmentCard extends StatelessWidget {
                     Row(
                       children: [
                         CircleAvatar(
-                          backgroundImage: AssetImage('lib/assets/doctor2.png'),
+                          backgroundImage: AssetImage('lib/assets/images/doctor2.png'),
                         ),
                         SizedBox(
                           width: 10,

@@ -28,7 +28,7 @@ extension FilterStatusExtension on FilterStatus {
 
 List<Map> schedules = [
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Mai Thanh Nam',
     'doctorTitle': 'Bác sĩ tim mạch',
     'reservedDate': 'Thứ 3, 14 tháng 5',
@@ -36,7 +36,7 @@ List<Map> schedules = [
     'status': FilterStatus.Upcoming
   },
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Nguyễn Lê Lâm',
     'doctorTitle': 'Bác sĩ thần kinh',
     'reservedDate': 'Thứ 2, 13 tháng 5',
@@ -44,7 +44,7 @@ List<Map> schedules = [
     'status': FilterStatus.Complete
   },
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Đinh Văn Tuấn Hải',
     'doctorTitle': 'Bác sĩ ngoại khoa',
     'reservedDate': 'Thứ 2, 13 tháng 5',
@@ -52,7 +52,7 @@ List<Map> schedules = [
     'status': FilterStatus.Upcoming
   },
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Thạch Xuân Hoàng',
     'doctorTitle': 'Bác sĩ nha khoa',
     'reservedDate': 'Thứ 4, 15 tháng 5',
@@ -60,7 +60,7 @@ List<Map> schedules = [
     'status': FilterStatus.Upcoming
   },
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Hồ Huy',
     'doctorTitle': 'Bác sĩ da liễu',
     'reservedDate': 'Thứ 2, 13 tháng 5',
@@ -68,7 +68,7 @@ List<Map> schedules = [
     'status': FilterStatus.Cancel
   },
   {
-    'img': 'lib/assets/doctor2.png',
+    'img': 'lib/assets/images/doctor2.png',
     'doctorName': 'Nguyễn Đào Anh Tuấn',
     'doctorTitle': 'Bác sĩ răng hàm mặt',
     'reservedDate': 'Thứ 4, 15 tháng 5',
