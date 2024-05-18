@@ -1,3 +1,4 @@
+import 'package:app_medicine/tabs/SettingTab.dart';
 import 'package:flutter/material.dart';
 
 import '../styles/colors.dart';
@@ -14,6 +15,7 @@ class Home extends StatefulWidget {
 List<Map> navigationBarItems = [
   {'icon': Icons.local_hospital, 'index': 0},
   {'icon': Icons.calendar_today, 'index': 1},
+  {'icon': Icons.account_balance, 'index': 2},
 ];
 
 class _HomeState extends State<Home> {
@@ -31,6 +33,7 @@ class _HomeState extends State<Home> {
         onPressedScheduleCard: goToSchedule,
       ),
       ScheduleTab(),
+      SettingTab(),
     ];
 
     return Scaffold(

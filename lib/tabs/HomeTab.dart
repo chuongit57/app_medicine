@@ -5,26 +5,34 @@ import '../styles/styles.dart';
 
 List<Map> doctors = [
   {
-    'img': 'assets/doctor02.png',
-    'doctorName': 'Dr. Gardner Pearson',
-    'doctorTitle': 'Heart Specialist'
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Mai Thanh Nam',
+    'doctorTitle': 'Bác sĩ tim mạch'
   },
   {
-    'img': 'assets/doctor03.jpeg',
-    'doctorName': 'Dr. Rosa Williamson',
-    'doctorTitle': 'Skin Specialist'
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Nguyễn Lê Lâm',
+    'doctorTitle': 'Bác sĩ thần kinh'
   },
   {
-    'img': 'assets/doctor02.png',
-    'doctorName': 'Dr. Gardner Pearson',
-    'doctorTitle': 'Heart Specialist'
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Thạch Xuân Hoàng',
+    'doctorTitle': 'Bác sĩ nha khoa'
   },
   {
-    'img': 'assets/doctor03.jpeg',
-    'doctorName': 'Dr. Rosa Williamson',
-    'doctorTitle': 'Skin Specialist'
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Hồ Huy',
+    'doctorTitle': 'Bác sĩ da liễu'
   }
 ];
+
+List<Map> categories = [
+  {'icon': Icons.coronavirus, 'text': 'Covid 19'},
+  {'icon': Icons.local_hospital, 'text': 'Bệnh viện'},
+  {'icon': Icons.car_rental, 'text': 'Gọi xe'},
+  {'icon': Icons.local_pharmacy, 'text': 'Đơn thuốc'},
+];
+
 
 class HomeTab extends StatelessWidget {
   final void Function() onPressedScheduleCard;
@@ -45,7 +53,7 @@ class HomeTab extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            UserIntro(),
+            // UserIntro(),
             SizedBox(
               height: 10,
             ),
@@ -53,6 +61,7 @@ class HomeTab extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
+
             CategoryIcons(),
             SizedBox(
               height: 20,
@@ -61,12 +70,12 @@ class HomeTab extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Appointment Today',
+                  'Lịch hẹn hôm nay',
                   style: kTitleStyle,
                 ),
                 TextButton(
                   child: Text(
-                    'See All',
+                    'Xem tất cả',
                     style: TextStyle(
                       color: Color(MyColors.yellow01),
                       fontWeight: FontWeight.bold,
@@ -86,7 +95,7 @@ class HomeTab extends StatelessWidget {
               height: 20,
             ),
             Text(
-              'Top Doctor',
+              'Bác sĩ hàng đầu',
               style: TextStyle(
                 color: Color(MyColors.header01),
                 fontWeight: FontWeight.bold,
@@ -175,7 +184,7 @@ class TopDoctorCard extends StatelessWidget {
                       width: 5,
                     ),
                     Text(
-                      '4.0 - 50 Reviews',
+                      '4.0 - 50 đánh giá',
                       style: TextStyle(color: Color(MyColors.grey02)),
                     )
                   ],
@@ -218,7 +227,7 @@ class AppointmentCard extends StatelessWidget {
                     Row(
                       children: [
                         CircleAvatar(
-                          backgroundImage: AssetImage('assets/doctor01.jpeg'),
+                          backgroundImage: AssetImage('lib/assets/doctor2.png'),
                         ),
                         SizedBox(
                           width: 10,
@@ -227,13 +236,13 @@ class AppointmentCard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Dr.Muhammed Syahid',
+                            Text('Nguyễn Lê Lâm',
                                 style: TextStyle(color: Colors.white)),
                             SizedBox(
                               height: 2,
                             ),
                             Text(
-                              'Dental Specialist',
+                              'Bác sĩ thần kinh',
                               style: TextStyle(color: Color(MyColors.text01)),
                             ),
                           ],
@@ -279,12 +288,7 @@ class AppointmentCard extends StatelessWidget {
   }
 }
 
-List<Map> categories = [
-  {'icon': Icons.coronavirus, 'text': 'Covid 19'},
-  {'icon': Icons.local_hospital, 'text': 'Hospital'},
-  {'icon': Icons.car_rental, 'text': 'Ambulance'},
-  {'icon': Icons.local_pharmacy, 'text': 'Pill'},
-];
+
 
 class CategoryIcons extends StatelessWidget {
   const CategoryIcons({
@@ -326,17 +330,17 @@ class ScheduleCard extends StatelessWidget {
           Icon(
             Icons.calendar_today,
             color: Colors.white,
-            size: 15,
+            size: 10,
           ),
           SizedBox(
             width: 5,
           ),
           Text(
-            'Mon, July 29',
+            'Thứ 2, 13/05',
             style: TextStyle(color: Colors.white),
           ),
           SizedBox(
-            width: 20,
+            width: 10,
           ),
           Icon(
             Icons.access_alarm,
@@ -371,7 +375,20 @@ class CategoryIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Color(MyColors.bg01),
-      onTap: () {},
+      onTap: () => showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Gọi ngay cho chúng tôi nếu bạn cần'),
+          content: const Text('0901379115'),
+          
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Column(
@@ -447,37 +464,6 @@ class SearchInput extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class UserIntro extends StatelessWidget {
-  const UserIntro({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
-              'Xin chào',
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
-            Text(
-              'Văn Chương 👋',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-          ],
-        ),
-        const CircleAvatar(
-          backgroundImage: AssetImage('assets/person.jpeg'),
-        )
-      ],
     );
   }
 }

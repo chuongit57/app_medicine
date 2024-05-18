@@ -15,12 +15,12 @@ class SliverDoctorDetail extends StatelessWidget {
         slivers: [
           SliverAppBar(
             pinned: true,
-            title: Text('Detail Doctor'),
+            title: Text('Thông tin bác sĩ'),
             backgroundColor: Color(MyColors.primary),
             expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
               background: Image(
-                image: AssetImage('assets/hospital.jpeg'),
+                image: AssetImage('lib/assets/hospital.jpeg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -56,14 +56,14 @@ class DetailBody extends StatelessWidget {
             height: 30,
           ),
           Text(
-            'About Doctor',
+            'Chi tiết về bác sĩ',
             style: kTitleStyle,
           ),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           Text(
-            'Dr. Joshua Simorangkir is a specialist in internal medicine who specialzed blah blah.',
+            'là một chuyên gia về nội khoa',
             style: TextStyle(
               color: Color(MyColors.purple01),
               fontWeight: FontWeight.w500,
@@ -74,8 +74,19 @@ class DetailBody extends StatelessWidget {
             height: 25,
           ),
           Text(
-            'Location',
+            'Nơi làm việc',
             style: kTitleStyle,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'Bệnh viện Đại học Y',
+            style: TextStyle(
+              color: Color(MyColors.purple01),
+              fontWeight: FontWeight.w900,
+              height: 1.5,
+            ),
           ),
           SizedBox(
             height: 25,
@@ -90,7 +101,7 @@ class DetailBody extends StatelessWidget {
                 Color(MyColors.primary),
               ),
             ),
-            child: Text('Book Appointment'),
+            child: Text('Đặt lịch hẹn'),
             onPressed: () => {},
           )
         ],
@@ -126,17 +137,17 @@ class DoctorInfo extends StatelessWidget {
     return Row(
       children: const [
         NumberCard(
-          label: 'Patients',
+          label: 'Người bệnh',
           value: '100+',
         ),
         SizedBox(width: 15),
         NumberCard(
-          label: 'Experiences',
-          value: '10 years',
+          label: 'Kinh nghiệm',
+          value: '10 năm',
         ),
         SizedBox(width: 15),
         NumberCard(
-          label: 'Rating',
+          label: 'Đánh giá',
           value: '4.0',
         ),
       ],
@@ -230,7 +241,7 @@ class DetailDoctorCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Dr. Josua Simorangkir',
+                      'Mai Thanh Nam',
                       style: TextStyle(
                           color: Color(MyColors.header01),
                           fontWeight: FontWeight.w700),
@@ -239,7 +250,7 @@ class DetailDoctorCard extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'Heart Specialist',
+                      'Bác sĩ tim mạch',
                       style: TextStyle(
                         color: Color(MyColors.grey02),
                         fontWeight: FontWeight.w500,
@@ -249,7 +260,7 @@ class DetailDoctorCard extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage('assets/doctor01.jpeg'),
+                image: AssetImage('lib/assets/doctor2.png'),
                 width: 100,
               )
             ],

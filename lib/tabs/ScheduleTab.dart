@@ -11,55 +11,69 @@ class ScheduleTab extends StatefulWidget {
 }
 
 enum FilterStatus { Upcoming, Complete, Cancel }
+extension FilterStatusExtension on FilterStatus {
+  String get name {
+    switch (this) {
+      case FilterStatus.Upcoming:
+        return 'Sắp tới';
+      case FilterStatus.Complete:
+        return 'Hoàn thành';
+      case FilterStatus.Cancel:
+        return 'Hủy bỏ';
+      default:
+        return "";
+    }
+  }
+}
 
 List<Map> schedules = [
   {
-    'img': 'assets/doctor01.jpeg',
-    'doctorName': 'Dr. Anastasya Syahid',
-    'doctorTitle': 'Dental Specialist',
-    'reservedDate': 'Monday, Aug 29',
-    'reservedTime': '11:00 - 12:00',
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Mai Thanh Nam',
+    'doctorTitle': 'Bác sĩ tim mạch',
+    'reservedDate': 'Thứ 3, 14 tháng 5',
+    'reservedTime': '08:00 - 11:00',
     'status': FilterStatus.Upcoming
   },
   {
-    'img': 'assets/doctor02.png',
-    'doctorName': 'Dr. Mauldya Imran',
-    'doctorTitle': 'Skin Specialist',
-    'reservedDate': 'Monday, Sep 29',
-    'reservedTime': '11:00 - 12:00',
-    'status': FilterStatus.Upcoming
-  },
-  {
-    'img': 'assets/doctor03.jpeg',
-    'doctorName': 'Dr. Rihanna Garland',
-    'doctorTitle': 'General Specialist',
-    'reservedDate': 'Monday, Jul 29',
-    'reservedTime': '11:00 - 12:00',
-    'status': FilterStatus.Upcoming
-  },
-  {
-    'img': 'assets/doctor04.jpeg',
-    'doctorName': 'Dr. John Doe',
-    'doctorTitle': 'Something Specialist',
-    'reservedDate': 'Monday, Jul 29',
-    'reservedTime': '11:00 - 12:00',
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Nguyễn Lê Lâm',
+    'doctorTitle': 'Bác sĩ thần kinh',
+    'reservedDate': 'Thứ 2, 13 tháng 5',
+    'reservedTime': '07:00 - 09:00',
     'status': FilterStatus.Complete
   },
   {
-    'img': 'assets/doctor05.jpeg',
-    'doctorName': 'Dr. Sam Smithh',
-    'doctorTitle': 'Other Specialist',
-    'reservedDate': 'Monday, Jul 29',
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Đinh Văn Tuấn Hải',
+    'doctorTitle': 'Bác sĩ ngoại khoa',
+    'reservedDate': 'Thứ 2, 13 tháng 5',
+    'reservedTime': '11:00 - 14:00',
+    'status': FilterStatus.Upcoming
+  },
+  {
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Thạch Xuân Hoàng',
+    'doctorTitle': 'Bác sĩ nha khoa',
+    'reservedDate': 'Thứ 4, 15 tháng 5',
     'reservedTime': '11:00 - 12:00',
+    'status': FilterStatus.Upcoming
+  },
+  {
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Hồ Huy',
+    'doctorTitle': 'Bác sĩ da liễu',
+    'reservedDate': 'Thứ 2, 13 tháng 5',
+    'reservedTime': '13:00 - 17:00',
     'status': FilterStatus.Cancel
   },
   {
-    'img': 'assets/doctor05.jpeg',
-    'doctorName': 'Dr. Sam Smithh',
-    'doctorTitle': 'Other Specialist',
-    'reservedDate': 'Monday, Jul 29',
-    'reservedTime': '11:00 - 12:00',
-    'status': FilterStatus.Cancel
+    'img': 'lib/assets/doctor2.png',
+    'doctorName': 'Nguyễn Đào Anh Tuấn',
+    'doctorTitle': 'Bác sĩ răng hàm mặt',
+    'reservedDate': 'Thứ 4, 15 tháng 5',
+    'reservedTime': '13:00 - 17:00',
+    'status': FilterStatus.Upcoming
   },
 ];
 
@@ -211,7 +225,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                             children: [
                               Expanded(
                                 child: OutlinedButton(
-                                  child: Text('Cancel'),
+                                  child: Text('Chi tiết'),
                                   onPressed: () {},
                                 ),
                               ),
@@ -220,7 +234,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                               ),
                               Expanded(
                                 child: ElevatedButton(
-                                  child: Text('Reschedule'),
+                                  child: Text('Hủy bỏ'),
                                   onPressed: () => {},
                                 ),
                               )
@@ -269,7 +283,7 @@ class DateTimeCard extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                'Mon, July 29',
+                'Thứ hai, 13 tháng 5',
                 style: TextStyle(
                   fontSize: 12,
                   color: Color(MyColors.primary),
