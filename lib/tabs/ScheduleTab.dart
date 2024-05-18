@@ -31,7 +31,7 @@ List<Map> schedules = [
     'img': 'lib/assets/doctor2.png',
     'doctorName': 'Mai Thanh Nam',
     'doctorTitle': 'Bác sĩ tim mạch',
-    'reservedDate': 'Thứ 3, 14 tháng 5',
+    'reservedDate': 'Thứ 3, 14/5',
     'reservedTime': '08:00 - 11:00',
     'status': FilterStatus.Upcoming
   },
@@ -39,7 +39,7 @@ List<Map> schedules = [
     'img': 'lib/assets/doctor2.png',
     'doctorName': 'Nguyễn Lê Lâm',
     'doctorTitle': 'Bác sĩ thần kinh',
-    'reservedDate': 'Thứ 2, 13 tháng 5',
+    'reservedDate': 'Thứ 2, 13/5',
     'reservedTime': '07:00 - 09:00',
     'status': FilterStatus.Complete
   },
@@ -47,7 +47,7 @@ List<Map> schedules = [
     'img': 'lib/assets/doctor2.png',
     'doctorName': 'Đinh Văn Tuấn Hải',
     'doctorTitle': 'Bác sĩ ngoại khoa',
-    'reservedDate': 'Thứ 2, 13 tháng 5',
+    'reservedDate': 'Thứ 2, 13/5',
     'reservedTime': '11:00 - 14:00',
     'status': FilterStatus.Upcoming
   },
@@ -55,7 +55,7 @@ List<Map> schedules = [
     'img': 'lib/assets/doctor2.png',
     'doctorName': 'Thạch Xuân Hoàng',
     'doctorTitle': 'Bác sĩ nha khoa',
-    'reservedDate': 'Thứ 4, 15 tháng 5',
+    'reservedDate': 'Thứ 4, 15/5',
     'reservedTime': '11:00 - 12:00',
     'status': FilterStatus.Upcoming
   },
@@ -63,7 +63,7 @@ List<Map> schedules = [
     'img': 'lib/assets/doctor2.png',
     'doctorName': 'Hồ Huy',
     'doctorTitle': 'Bác sĩ da liễu',
-    'reservedDate': 'Thứ 2, 13 tháng 5',
+    'reservedDate': 'Thứ 2, 13/5',
     'reservedTime': '13:00 - 17:00',
     'status': FilterStatus.Cancel
   },
@@ -71,7 +71,7 @@ List<Map> schedules = [
     'img': 'lib/assets/doctor2.png',
     'doctorName': 'Nguyễn Đào Anh Tuấn',
     'doctorTitle': 'Bác sĩ răng hàm mặt',
-    'reservedDate': 'Thứ 4, 15 tháng 5',
+    'reservedDate': 'Thứ 4, 15/5',
     'reservedTime': '13:00 - 17:00',
     'status': FilterStatus.Upcoming
   },
@@ -283,7 +283,7 @@ class DateTimeCard extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                'Thứ hai, 13 tháng 5',
+                'Thứ hai, 13/5',
                 style: TextStyle(
                   fontSize: 12,
                   color: Color(MyColors.primary),
