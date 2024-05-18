@@ -260,7 +260,7 @@ class DetailDoctorCard extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage('lib/assets/doctor2.png'),
+                image: AssetImage('lib/assets/images/doctor2.png'),
                 width: 100,
               )
             ],
