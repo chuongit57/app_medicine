@@ -38,8 +38,10 @@ class _SignUpState extends State<SignUp> {
                   const ListTile(
                     title: Text(
                       "Đăng ký tài khoản",
-                      style:
-                      TextStyle(fontSize: 36, fontWeight: FontWeight.bold,),
+                      style: TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
 
@@ -47,23 +49,24 @@ class _SignUpState extends State<SignUp> {
 
                   Container(
                     margin: EdgeInsets.all(8),
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.deepPurple.withOpacity(.2)),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.deepPurple.withOpacity(.2)),
                     child: TextFormField(
                       controller: username,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Tên đăng nhập là cần thiết";
                         }
+                        if (value.length < 6) {
+                          return "Tên đăng nhập tối thiểu là 6 kí tự";
+                        }
                         return null;
                       },
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
                         border: InputBorder.none,
-                        hintText: "Username",
+                        hintText: "Tên đăng nhập",
                       ),
                     ),
                   ),
@@ -71,16 +74,17 @@ class _SignUpState extends State<SignUp> {
                   //Password field
                   Container(
                     margin: const EdgeInsets.all(8),
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.deepPurple.withOpacity(.2)),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.deepPurple.withOpacity(.2)),
                     child: TextFormField(
                       controller: password,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Mật khẩu là cần thiết";
+                        }
+                        if (value.length < 6) {
+                          return "Mật khẩu tối thiểu là 6 kí tự";
                         }
                         return null;
                       },
@@ -88,7 +92,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: InputDecoration(
                           icon: const Icon(Icons.lock),
                           border: InputBorder.none,
-                          hintText: "Password",
+                          hintText: "Mật khẩu",
                           suffixIcon: IconButton(
                               onPressed: () {
                                 //In here we will create a click to show and hide the password a toggle button
@@ -97,9 +101,7 @@ class _SignUpState extends State<SignUp> {
                                   isVisible = !isVisible;
                                 });
                               },
-                              icon: Icon(isVisible
-                                  ? Icons.visibility
-                                  : Icons.visibility_off))),
+                              icon: Icon(isVisible ? Icons.visibility : Icons.visibility_off))),
                     ),
                   ),
 
@@ -107,11 +109,9 @@ class _SignUpState extends State<SignUp> {
                   // Now we check whether password matches or not
                   Container(
                     margin: const EdgeInsets.all(8),
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.deepPurple.withOpacity(.2)),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.deepPurple.withOpacity(.2)),
                     child: TextFormField(
                       controller: confirmPassword,
                       validator: (value) {
@@ -126,7 +126,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: InputDecoration(
                           icon: const Icon(Icons.lock),
                           border: InputBorder.none,
-                          hintText: "Confirm password",
+                          hintText: "Nhập lại mật khẩu",
                           suffixIcon: IconButton(
                               onPressed: () {
                                 //In here we will create a click to show and hide the password a toggle button
@@ -135,9 +135,7 @@ class _SignUpState extends State<SignUp> {
                                   isVisible = !isVisible;
                                 });
                               },
-                              icon: Icon(isVisible
-                                  ? Icons.visibility
-                                  : Icons.visibility_off))),
+                              icon: Icon(isVisible ? Icons.visibility : Icons.visibility_off))),
                     ),
                   ),
 
@@ -146,26 +144,16 @@ class _SignUpState extends State<SignUp> {
                   Container(
                     height: 55,
                     width: MediaQuery.of(context).size.width * .9,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.deepPurple),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.deepPurple),
                     child: TextButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             //Login method will be here
 
                             final db = DatabaseHelper();
-                            db
-                                .signup(Users(
-                                usrName: username.text,
-                                usrPassword: password.text))
-                                .whenComplete(() {
+                            db.signup(Users(usrName: username.text, usrPassword: password.text)).whenComplete(() {
                               //After success user creation go to login screen
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                      const LoginScreen()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
                             });
                           }
                         },
@@ -183,10 +171,7 @@ class _SignUpState extends State<SignUp> {
                       TextButton(
                           onPressed: () {
                             //Navigate to sign up
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
                           },
                           child: const Text("Đăng nhập"))
                     ],

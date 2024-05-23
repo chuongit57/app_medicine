@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import "package:latlong2/latlong.dart" as latLng;
-
 import '../styles/colors.dart';
 import '../styles/styles.dart';
 
@@ -121,7 +120,7 @@ class DoctorLocation extends StatelessWidget {
       width: double.infinity,
       height: 200,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20)
+          borderRadius: BorderRadius.circular(20)
       ),
     );
   }
@@ -189,8 +188,8 @@ class NumberCard extends StatelessWidget {
           color: Color(MyColors.bg03),
         ),
         padding: EdgeInsets.symmetric(
-          vertical: 30,
-          horizontal: 15,
+          vertical: 20,
+          horizontal: 10,
         ),
         child: Column(
           children: [
@@ -260,7 +259,7 @@ class DetailDoctorCard extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage('lib/assets/images/doctor2.png'),
+                image: AssetImage('lib/assets/doctor2.png'),
                 width: 100,
               )
             ],

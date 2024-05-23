@@ -4,13 +4,16 @@ import '../styles/colors.dart';
 import '../styles/styles.dart';
 
 class ScheduleTab extends StatefulWidget {
-  const ScheduleTab({Key? key}) : super(key: key);
+  final String statusSchedule;
+
+  const ScheduleTab({Key? key, required this.statusSchedule}) : super(key: key);
 
   @override
   State<ScheduleTab> createState() => _ScheduleTabState();
 }
 
 enum FilterStatus { Upcoming, Complete, Cancel }
+
 extension FilterStatusExtension on FilterStatus {
   String get name {
     switch (this) {
@@ -28,15 +31,15 @@ extension FilterStatusExtension on FilterStatus {
 
 List<Map> schedules = [
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Mai Thanh Nam',
     'doctorTitle': 'Bác sĩ tim mạch',
-    'reservedDate': 'Thứ 3, 14/5',
+    'reservedDate': 'Thứ 3, 14 tháng 5',
     'reservedTime': '08:00 - 11:00',
     'status': FilterStatus.Upcoming
   },
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Nguyễn Lê Lâm',
     'doctorTitle': 'Bác sĩ thần kinh',
     'reservedDate': 'Thứ 2, 13/5',
@@ -44,7 +47,7 @@ List<Map> schedules = [
     'status': FilterStatus.Complete
   },
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Đinh Văn Tuấn Hải',
     'doctorTitle': 'Bác sĩ ngoại khoa',
     'reservedDate': 'Thứ 2, 13/5',
@@ -52,15 +55,15 @@ List<Map> schedules = [
     'status': FilterStatus.Upcoming
   },
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Thạch Xuân Hoàng',
     'doctorTitle': 'Bác sĩ nha khoa',
-    'reservedDate': 'Thứ 4, 15/5',
+    'reservedDate': 'Thứ 4, 15 tháng 5',
     'reservedTime': '11:00 - 12:00',
     'status': FilterStatus.Upcoming
   },
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Hồ Huy',
     'doctorTitle': 'Bác sĩ da liễu',
     'reservedDate': 'Thứ 2, 13/5',
@@ -68,10 +71,10 @@ List<Map> schedules = [
     'status': FilterStatus.Cancel
   },
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Nguyễn Đào Anh Tuấn',
     'doctorTitle': 'Bác sĩ răng hàm mặt',
-    'reservedDate': 'Thứ 4, 15/5',
+    'reservedDate': 'Thứ 4, 15 tháng 5',
     'reservedTime': '13:00 - 17:00',
     'status': FilterStatus.Upcoming
   },
@@ -80,6 +83,15 @@ List<Map> schedules = [
 class _ScheduleTabState extends State<ScheduleTab> {
   FilterStatus status = FilterStatus.Upcoming;
   Alignment _alignment = Alignment.centerLeft;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.statusSchedule == 'Hoàn thành') {
+      status = FilterStatus.Complete;
+      _alignment = Alignment.center;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -173,6 +185,11 @@ class _ScheduleTabState extends State<ScheduleTab> {
                 itemBuilder: (context, index) {
                   var _schedule = filteredSchedules[index];
                   bool isLastElement = filteredSchedules.length + 1 == index;
+                  var textButton = filteredSchedules[index]['status'] == FilterStatus.Upcoming
+                      ? 'Đặt lịch'
+                      : filteredSchedules[index]['status'] == FilterStatus.Complete
+                          ? 'Hủy bỏ'
+                          : 'Xóa';
                   return Card(
                     margin: !isLastElement ? EdgeInsets.only(bottom: 20) : EdgeInsets.zero,
                     child: Padding(
@@ -226,7 +243,9 @@ class _ScheduleTabState extends State<ScheduleTab> {
                               Expanded(
                                 child: OutlinedButton(
                                   child: Text('Chi tiết'),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/detail', arguments: filteredSchedules[index]);
+                                  },
                                 ),
                               ),
                               SizedBox(
@@ -234,7 +253,7 @@ class _ScheduleTabState extends State<ScheduleTab> {
                               ),
                               Expanded(
                                 child: ElevatedButton(
-                                  child: Text('Hủy bỏ'),
+                                  child: Text(textButton),
                                   onPressed: () => {},
                                 ),
                               )
@@ -285,7 +304,7 @@ class DateTimeCard extends StatelessWidget {
               Text(
                 'Thứ hai, 13/5',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 15,
                   color: Color(MyColors.primary),
                   fontWeight: FontWeight.bold,
                 ),
@@ -300,7 +319,7 @@ class DateTimeCard extends StatelessWidget {
                 size: 17,
               ),
               SizedBox(
-                width: 5,
+                width: 3,
               ),
               Text(
                 '11:00 ~ 12:10',

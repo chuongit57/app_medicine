@@ -1,6 +1,10 @@
 import 'package:app_medicine/screens/auth/signup.dart';
+import 'package:app_medicine/screens/doctor_home.dart';
 import 'package:app_medicine/screens/home.dart';
+import 'package:app_medicine/tabs/ScheduleTab.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 
 import '../../model/users.dart';
 import '../../sql_lite/sql_lite.dart';
@@ -11,6 +15,9 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
+
+enum userJob {doctor,admin,painter}
+
 
 class _LoginScreenState extends State<LoginScreen> {
 
@@ -32,8 +39,23 @@ class _LoginScreenState extends State<LoginScreen> {
     if (response == true) {
       //If login is correct, then goto notes
       if (!mounted) return;
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Home()));
+      // if response.role == userJob.painter {
+      //
+      // } else if response.role == userJob.doctor  {
+      //
+      // } else if response.role == userJob.admin {
+      //
+      // }
+      if (username.text == "doctor") {
+        Navigator.pushReplacement(
+            // context, MaterialPageRoute(builder: (context) => const ScheduleTab(statusSchedule: "")));
+            context, MaterialPageRoute(builder: (context) => const DoctorHome()));
+      } else {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const Home()));
+      }
+
+
     } else {
       //If not, true the bool value to show error message
       setState(() {
@@ -82,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
                         border: InputBorder.none,
-                        hintText: "Username",
+                        hintText: "Tên đăng nhập",
                       ),
                     ),
                   ),
@@ -107,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: InputDecoration(
                           icon: const Icon(Icons.lock),
                           border: InputBorder.none,
-                          hintText: "Password",
+                          hintText: "Mật khẩu",
                           suffixIcon: IconButton(
                               onPressed: () {
                                 //In here we will create a click to show and hide the password a toggle button
@@ -126,7 +148,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   //Login button
                   Container(
                     height: 55,
-                    width: MediaQuery.of(context).size.width * .9,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * .9,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: Colors.deepPurple),

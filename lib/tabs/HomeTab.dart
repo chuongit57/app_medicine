@@ -1,38 +1,40 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
 import '../styles/colors.dart';
 import '../styles/styles.dart';
 
 List<Map> doctors = [
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Mai Thanh Nam',
     'doctorTitle': 'Bác sĩ tim mạch'
   },
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Nguyễn Lê Lâm',
     'doctorTitle': 'Bác sĩ thần kinh'
   },
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Thạch Xuân Hoàng',
     'doctorTitle': 'Bác sĩ nha khoa'
   },
   {
-    'img': 'lib/assets/images/doctor2.png',
+    'img': 'lib/assets/doctor2.png',
     'doctorName': 'Hồ Huy',
     'doctorTitle': 'Bác sĩ da liễu'
   }
 ];
 
 List<Map> categories = [
-  {'icon': Icons.coronavirus, 'text': 'Covid 19'},
-  {'icon': Icons.local_hospital, 'text': 'Bệnh viện'},
-  {'icon': Icons.car_rental, 'text': 'Gọi xe'},
+  {'icon': Icons.chat, 'text': 'Tư vấn'},
   {'icon': Icons.local_pharmacy, 'text': 'Đơn thuốc'},
+  {'icon': Icons.car_rental, 'text': 'Gọi xe'},
+  {'icon': Icons.local_hospital, 'text': 'Bệnh viện'},
 ];
-
 
 class HomeTab extends StatelessWidget {
   final void Function() onPressedScheduleCard;
@@ -81,7 +83,7 @@ class HomeTab extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () => {onPressedScheduleCard()},
                 )
               ],
             ),
@@ -134,7 +136,14 @@ class TopDoctorCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 20),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/detail');
+          Navigator.pushNamed(context, '/detail', arguments: {
+            'img': 'lib/assets/doctor2.png',
+            'doctorName': 'Mai Thanh Nam',
+            'doctorTitle': 'Bác sĩ tim mạch',
+            'reservedDate': 'Thứ 3, 14 tháng 5',
+            'reservedTime': '08:00 - 11:00',
+            'status': "Hoàn thành"
+          });
         },
         child: Row(
           children: [
@@ -227,7 +236,7 @@ class AppointmentCard extends StatelessWidget {
                     Row(
                       children: [
                         CircleAvatar(
-                          backgroundImage: AssetImage('lib/assets/images/doctor2.png'),
+                          backgroundImage: AssetImage('lib/assets/doctor2.png'),
                         ),
                         SizedBox(
                           width: 10,
@@ -287,8 +296,6 @@ class AppointmentCard extends StatelessWidget {
     );
   }
 }
-
-
 
 class CategoryIcons extends StatelessWidget {
   const CategoryIcons({
@@ -375,20 +382,49 @@ class CategoryIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Color(MyColors.bg01),
-      onTap: () => showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Gọi ngay cho chúng tôi nếu bạn cần'),
-          content: const Text('0901379115'),
-          
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'OK'),
-              child: const Text('OK'),
+      onTap: () => {
+        print(text),
+        if (text == 'Đơn thuốc')
+          {Navigator.pushNamed(context, '/prescription')}
+        else if (text == 'Gọi xe')
+          {
+            showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                title: const Text('Gọi ngay cho chúng tôi nếu bạn cần',
+                    textAlign: TextAlign.center),
+                content: const Text('0901379115', textAlign: TextAlign.center),
+                contentTextStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.pink,
+                    fontSize: 22),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, 'OK'),
+                    child: const Text('OK'),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
+          }
+        else
+          {
+            showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                // title: const Text('Tính năng đang phát triển'),
+                content: const Text('Tính năng đang phát triển',
+                    textAlign: TextAlign.center),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, 'OK'),
+                    child: const Text('OK'),
+                  ),
+                ],
+              ),
+            ),
+          }
+      },
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Column(

@@ -1,4 +1,4 @@
-
+import 'package:app_medicine/screens/auth/login.dart';
 import 'package:app_medicine/screens/edit_settings_screen.dart';
 import 'package:app_medicine/widgets/forward_button.dart';
 import 'package:app_medicine/widgets/setting_item.dart';
@@ -19,13 +19,6 @@ class _SettingTabState extends State<SettingTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Ionicons.chevron_back_outline),
-        ),
-        leadingWidth: 80,
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30),
@@ -52,13 +45,14 @@ class _SettingTabState extends State<SettingTab> {
                 width: double.infinity,
                 child: Row(
                   children: [
-                    Image.asset("lib/assets/avatar1.jpg", width: 70, height: 70),
+                    Image.asset("lib/assets/avatar1.jpg",
+                        width: 70, height: 70),
                     const SizedBox(width: 20),
                     const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Đặng Văn Chương",
+                          "Nguyễn Anh Tuấn",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
@@ -77,8 +71,10 @@ class _SettingTabState extends State<SettingTab> {
                           ),
                         );
                       },
-                    )
+                    ),
+
                   ],
+
                 ),
               ),
               const SizedBox(height: 40),
@@ -133,7 +129,28 @@ class _SettingTabState extends State<SettingTab> {
                 icon: Ionicons.log_out,
                 bgColor: Colors.red.shade100,
                 iconColor: Colors.red,
-                onTap: () {},
+                onTap: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Đăng xuất', textAlign: TextAlign.center,),
+                    content: const Text('Bạn có chắc muốn đăng xuất', textAlign: TextAlign.center),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Cancel'),
+                        child: const Text('Quay lại'),
+                      ),
+                      TextButton(
+                        onPressed: () => {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginScreen()))
+                        },
+                        child: const Text('Đăng xuất'),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
